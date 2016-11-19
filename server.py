@@ -1,8 +1,3 @@
-'''
-Created on Nov 19, 2016
-
-@author: evanlewis
-'''
 import socket
 from threading import *
 '''serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
