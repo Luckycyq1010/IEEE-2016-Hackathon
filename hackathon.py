@@ -1,4 +1,4 @@
-import sys, pygame, time
+import sys, pygame, time, socket
 from pygame.locals import *
 
 pygame.init()
@@ -17,7 +17,9 @@ BUTTON5 = False
 BUTTON6 = False
 BUTTON7 = False
 BUTTON8 = False
-BUTTON9 = False
+clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+clientsocket.connect(('155.246.215.91', 8089))
+
 
 #x = 0
 
@@ -43,7 +45,7 @@ while run:
             if jerry.get_button(8):
                 BUTTON8 = True
             if jerry.get_button(9):
-                BUTTON9 = True
+                run = False
         if event.type == pygame.JOYBUTTONUP:
             if not jerry.get_button(0):
                 BUTTON0 = False
@@ -65,7 +67,6 @@ while run:
                 BUTTON8 = False
             if not jerry.get_button(9):
                 BUTTON9 = False
-
-    '''if BUTTON2:
-        x += 1
-        print(x)'''
+        send = str(BUTTON0)[:1] + str(BUTTON1)[:1] + str(BUTTON2)[:1] + str(BUTTON3)[:1] + str(BUTTON4)[:1] + str(BUTTON5)[:1] + \
+               str(BUTTON6)[:1] + str(BUTTON7)[:1] + str(BUTTON8)[:1]
+        clientsocket.send(send)
