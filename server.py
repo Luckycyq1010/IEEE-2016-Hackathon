@@ -1,3 +1,8 @@
+'''
+Created on Nov 19, 2016
+
+@author: evanlewis
+'''
 import socket
 from threading import *
 '''serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -15,7 +20,8 @@ host = "155.246.207.22"
 port = 8089
 print (host)
 print (port)
-serversocket.bind((host, port))
+#serversocket.bind((host, port))
+serversocket.bind(("", 8089))
 #value = 'FFFFFFFFF'
 BUTTON0 = False
 BUTTON1 = False
