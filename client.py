@@ -14,5 +14,3 @@ while x < 500:
     x += 1
     time.sleep(1)
     clientsocket.send(message.encode())
-    
-'''message.encode()'''
