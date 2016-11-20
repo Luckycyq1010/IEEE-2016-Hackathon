@@ -84,6 +84,9 @@ def twosCompliment(number):
 
 
 def drive(speed, radius):
+
+    print("speed = " + str(speed) + " radius = " + str(radius))
+
     ser.write(START)
     ser.write(CONTROL)
     ser.write(DRIVE)
@@ -100,6 +103,11 @@ def drive(speed, radius):
         ser.write(chr(twosCompliment(radius)[1]))
 
 
+def stop():
+    print("stop")
+    drive(0,0)
 
+
+safeMode()
 
 
