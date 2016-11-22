@@ -18,7 +18,7 @@ BUTTON6 = False
 BUTTON7 = False
 BUTTON8 = False
 clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-clientsocket.connect(('155.246.215.91', 8089))
+clientsocket.connect(('ieee.littlebencreations.com', 8089))
 
 
 #x = 0
