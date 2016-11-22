@@ -1,7 +1,6 @@
 import serial, time
 
-ser = serial.Serial("/dev/tty.usbserial-AI04YQHA", baudrate=57600, timeout=0.1)
-
+ser = serial.Serial("/dev/ttyUSB0", baudrate=57600, timeout=0.1)
 
 
 START = chr(128)
@@ -15,7 +14,7 @@ SPOT = chr(134)
 CLEAN = chr(135)
 MAX = chr(135)
 DRIVE = chr(137)
-
+DOCK = chr(143)
 
 def drive(speed, radius):
 
@@ -108,6 +107,43 @@ def stop():
     drive(0,0)
 
 
+def playSong(number): 
+	ser.write(START)
+	ser.write(CONTROL)
+	ser.write(chr(141))
+	ser.write(chr(number))
+
+
+def dock():
+	ser.write(CLEAN)
+	time.sleep(0.2)
+	ser.write(chr(143))
+
+
+def undock():
+	ser.write(CLEAN)
+	time.sleep(5) 
+	safeMode()
+
+
+def dumpsong(songNumber, song):
+	ser.write(START)
+	ser.write(CONTROL)
+	ser.write(chr(140))
+	ser.write(chr(songNumber))
+	ser.write(chr(len(song)/2))
+	for thing in song: 
+		ser.write(chr(thing))
+
+SONG1 = [91,32,91,32,91,32,87,24,82,8,91,32]
+SONG2 = [87,24,82,8,91,64] 
+
+def starwars():
+	playSong(0);time.sleep(2.5); playSong(1)
+
+turnOn()
+
 safeMode()
 
 
+#starwars()

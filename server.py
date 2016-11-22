@@ -1,3 +1,4 @@
+
 import socket
 from threading import *
 import roomba
@@ -107,7 +108,7 @@ class client(Thread):
 
 
 TURNSPEED = 200
-DRIVESPEED = 200
+DRIVESPEED = 500
 
 motors = [False, False, False]
 
